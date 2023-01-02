@@ -1,1 +1,46 @@
+#define lli long long int
+
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+      
+        stack <lli> stk;
+        
+        for(auto &s : tokens){
+            if(s == "+" || s == "-" || s == "*" || s == "/"){
+
+                lli  Num1 = stk.top(); 
+                stk.pop();
+                lli Num2 = stk.top(); 
+                stk.pop();
+
+                if(s == "+") 
+                    Num1 = Num2 + Num1;
+                
+                if(s == "-") 
+                    Num1 = Num2 - Num1;
+
+                if(s == "*") 
+                    Num1 = Num2 * Num1;
+
+                if(s == "/") 
+                    Num1 = Num2 / Num1;
+
+                stk.push(Num1);
+            }
+
+            else{
+                stk.push(stoi(s));
+            }
+        }
+        return stk.top();
+    }
+};
+
+Time Complexity: O(n), where n is the number of tokens
+Space Complexity: O(n), for maintaining the stack
+
+Question link: https://leetcode.com/problems/evaluate-reverse-polish-notation/
+Submission Link: https://leetcode.com/problems/evaluate-reverse-polish-notation/submissions/869520361/
+
 
