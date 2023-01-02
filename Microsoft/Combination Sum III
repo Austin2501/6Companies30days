@@ -1,0 +1,43 @@
+class Solution {
+void combo(int index, int sum, int n, vector<vector<int>> &AllCombination, vector<int> &ans, int k)
+{
+    if(sum ==n && k==0)
+    {
+        AllCombination.push_back(ans);
+        return;
+    }
+    if(sum>n)
+    {
+        return;
+    }
+    for(int i = index; i<=9; i++)
+    {
+        if(i>n)
+        {
+            break;
+        }
+        ans.push_back(i);
+        combo(i+1, sum+i, n, AllCombination, ans, k-1);
+        ans.pop_back();
+    }
+}
+public:
+    vector<vector<int>> combinationSum3(int k, int n) {
+        
+        vector<int> ans;
+        vector<vector<int>> AllCombination;
+        combo(1, 0, n, AllCombination, ans, k);
+
+        return AllCombination;
+    }
+};
+
+Time Complexity: O(9!.k/(9-k)!)
+--> Possible combination is 9, the second time 8, the 7 then so on.
+--> k cannot be greater than 9, i.e. (9-k)! 
+--> at last we copy data that will take O(k)
+
+Space Complexity: O(k)
+
+Question Link: https://leetcode.com/problems/combination-sum-iii/
+Submission Link: https://leetcode.com/problems/combination-sum-iii/submissions/869756919/
