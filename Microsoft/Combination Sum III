@@ -37,7 +37,7 @@ Time Complexity: O(9!.k/(9-k)!)
 --> k cannot be greater than 9, i.e. (9-k)! 
 --> at last we copy data that will take O(k)
 
-Space Complexity: O(k)
+Space Complexity: O(k) + O(k) (ans of size k + recursion of size k)
 
 Question Link: https://leetcode.com/problems/combination-sum-iii/
 Submission Link: https://leetcode.com/problems/combination-sum-iii/submissions/869756919/
